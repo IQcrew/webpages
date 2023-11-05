@@ -1,0 +1,125 @@
+
+
+body {
+	font-family: sans-serif;
+	font-weight: 100;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+}
+.bg{
+    z-index: -1;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+}
+h1{
+    text-align: center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 60px;
+    text-shadow: 0px 0px 20px rgba(0,0,0,0.7);
+}
+.secondPart {
+    display: flex;
+    justify-content: center;
+    
+}
+form{
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+    text-align: center;
+    margin: 10px;
+}
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+table {
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 100%;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+    text-align: center;
+}
+th{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+::placeholder{
+    color: white;
+}
+.inputText{ 
+    margin: 5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    font-weight: 0; 
+    font-size:large; 
+    color: #ffffff; 
+    background-color: rgba(255,255,255,0.2);
+    padding: 10px; 
+    border: none; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 22px;
+    transition : 327ms;
+    transform: translateY(0);
+    }
+    
+.inputText:hover{ 
+    transition : 327ms;
+    border-radius: 14px;
+    background-color: rgba(255,255,255,0.3);
+    }
+   
+.inputButton{ 
+        padding: 15px;
+        margin: 5px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+        font-weight: 0; 
+        font-size: 20px; 
+        width: 20%;
+        color: #ffffff; 
+        background-color: rgba(255,255,255,0.2);
+        border: none; 
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border-radius: 22px;
+        transition : 327ms;
+        }
+        
+.inputButton:hover{ 
+        transition : 327ms;
+        width: 30%;
+        background-color: rgba(0,0,0,0.4);
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+.red:hover{
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+
+
+
+
+

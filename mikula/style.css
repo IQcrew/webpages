@@ -1,0 +1,42 @@
+
+
+.formular {
+  border: 1px outset rgb(0, 0, 0);  
+  padding: 50px;
+
+}
+.f1 {
+    text-align: left;
+  }
+  .frm {
+    display: flex;
+    justify-content: space-between;
+  }
+  .f2 {
+    text-align: right;
+  }
+
+
+
+
+
+.bmi {
+    border: 1px outset rgb(0, 0, 0);  
+    text-align: left;
+  }
+
+  .resW{
+    background-color: rgb(255, 255, 255);
+}
+.resG{
+    background-color: green;
+}
+.resR{
+    background-color: red;
+}
+.resO{
+    background-color: orange;
+}
+.resY{
+    background-color: yellow;
+}
