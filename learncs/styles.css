@@ -1,0 +1,215 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a background color to the whole page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('assets/bg.png'); /* Replace 'your-image.jpg' with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+}
+.center{
+    display: flex;
+    justify-content: space-around;
+}
+/* Style the header */
+header {
+    background: #00bfff; /* Change to your preferred color */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img {
+    width: 60px; /* Adjust the size as needed */
+    margin-right: 10px;
+}
+
+/* Style the sections */
+section {
+    background: rgba(255, 255, 255, 0.3); /* Set the initial background with transparency */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    width: 70%;
+    display: flex;
+}
+
+img {
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Adds a smooth transition for both shadow and zoom on hover */
+    height: auto; /* Automatically adjust the height to maintain the image's aspect ratio */
+    object-fit: contain; /* or "cover" depending on how you want the image to fit within its container */
+}
+img:hover{
+    transform: scale(1.05); /* Zooms the image by 5% on hover */
+}
+.modern-image {
+    border-radius: 20px; /* Adds rounded corners, adjust the value to change the roundness */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow to the image */
+}
+
+.modern-image:hover {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4); /* Increases the shadow on hover */
+
+}
+/* Change background transparency on hover */
+section:hover {
+    background: rgba(255, 255, 255, 0.6); /* Set the background without transparency on hover */
+    backdrop-filter: blur(30px); /* Apply the blur effect */
+    transition: 0.3s linear;
+}
+.image{
+    width: 50%;
+}
+
+/* Style the h2 headings with Inconsolata */
+h2 {
+    color: #000; /* Change to your preferred color */
+    font-family: 'Inconsolata', monospace;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style the paragraphs with Fira Code */
+p {
+    font-family: 'Fira Code', monospace;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Style the unordered lists */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Style the blockquote */
+blockquote {
+    background: rgba(255, 255, 255, 0.1); /* Set the initial background with transparency */
+    padding: 20px;
+    border-left: 5px solid #00bfff; /* Change to your preferred color */
+    margin: 20px 0;
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+}
+
+/* Style the footer */
+footer {
+    background: #00bfff; /* Change to your preferred color */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+}
+.section-container{
+    background: rgb(255, 255, 255, 0.0);
+    width: 50%;
+}
+.section-container:hover{
+    transform: scale(1.03); /* Zooms the image by 5% on hover */
+}
+
+/* Change color on hover */
+.section-container:hover h2 {
+    color: #01004b;
+}
+ /* Add hover animations */
+ .section-container {
+    transition:  0.3s ease-in-out;
+}
+
+/* Right-aligned sections */
+.right-aligned .section-container {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.right-aligned .section-container h2 {
+    text-align: right;
+}
+
+.highlights {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #01004b;
+}
+/* Add your custom styles here */
+.fullscreen-header {
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* 100% of the viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header-text {
+    color: #fff; /* Text color */
+    font-family: 'Fira Code', monospace;
+    font-size: 50px;
+}
+
+.scroll-button {
+    font-family: 'Fira Code', monospace;
+    font-size: 34.5px; /* Adjust the font size as needed */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Initially positioned off-screen */
+    margin-top: 20px;
+    background-color: #00bfff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+/* The container for the typing text */
+.typing-text {
+    display: inline-block;
+    white-space: pre;
+    overflow: hidden;
+    border-right: .15em solid orange; /* Cursor effect */
+    margin: 0 auto;
+    animation: typing 3s steps(20, end), blink-caret .75s step-end infinite;
+}
+
+/* The typing animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* The cursor blink animation */
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: rgb(0, 255, 55);
+    }
+}
