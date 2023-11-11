@@ -4,7 +4,6 @@
     <title>Učte sa programovať v C#</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=swap">
     <style>
 
     </style>
@@ -73,6 +72,9 @@
         </section>
     </div>
 
+    <div class="roadmap fullscreen-header" id="roadmap">
+        <button class="roadmap-button"style="top: 10%; left: 10%;">LOOOL</button>
+    </div>
 
     <!-- Add similar divs for other sections with unique IDs -->
 
@@ -111,8 +113,8 @@
 
     </script>
 
-    <footer>
+    <!-- <footer>
         &copy; 2023 Krkoška Šimon
-    </footer>
+    </footer> -->
 </body>
 </html>
