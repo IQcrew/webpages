@@ -1,0 +1,339 @@
+
+
+
+header {
+    background-color: #333; 
+    color: #fff; 
+    padding: 2px; 
+    
+}
+/* ikona vpredu */
+.logo-icon {
+    margin-right: 10px;
+    font-size: 3em; 
+}
+
+
+/* searchbar */
+.search-form {
+    list-style: none;
+    margin: 5;
+}
+
+.search-form form {
+    display: flex;
+    
+}
+
+.search-form input[type="text"] {
+    padding: 8px;
+    
+    border: 1px solid #ccc;
+    margin-left: 350px;
+    width: 200px;
+}
+
+.search-form button {
+    padding: 10px 20px;
+   
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+/* pods. uprava */
+header h1 {
+    font-size: 10px; 
+}
+
+
+header nav ul {
+    list-style: none; 
+    padding: 1;
+}
+
+header nav li {
+    display: inline; 
+    margin-right: 100px; 
+}
+
+header nav a {
+    color: #fff; 
+    text-decoration: none; 
+    margin-right: 10px;
+    font-size: 20px;
+    
+    
+}
+
+header nav a:hover {
+    text-decoration: underline; 
+}
+
+
+/* Kosik a profil */
+.profile-icon,
+.cart-icon {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #ccc;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.profile-icon svg,
+.cart-icon svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+
+/* Itemy na prekliknutie na hlavnej stranke  */
+ 
+.categories {
+    margin-top: 20px;
+    width: fit-content; 
+    padding: 5px; 
+    
+    
+    background-color: #f0f0f0; 
+}
+
+.category-item {
+    margin-bottom: 20px;
+}
+
+.category-item a {
+    display: block;
+    padding: 20px;
+    border: 1px solid 333;
+    border-radius: 2px;
+    text-decoration: none;
+    color: #333;
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+.category-item a:hover {
+    background-color: white; 
+}
+
+.category-item a i {
+    margin-right: 5px;
+}
+
+/* podstrankovanie na hlavnej stranke  */
+
+
+.white-bar {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: black; 
+}
+
+.white-bar::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; 
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: white;
+}
+
+/* novinky */
+.red-line {
+    display: inline-block;
+    width: 3px; 
+    height: 2em; 
+    background-color: red; 
+    margin-right: 5px; 
+    vertical-align: middle; 
+}
+
+.news-text {
+    line-height: 1em;
+    
+    font-weight: bold; 
+    vertical-align: middle; 
+    font-size: 1.2em; 
+}
+
+.calendar-icon {
+    display: flex;
+    align-items: center;
+    margin-top: 5px; 
+}
+
+.calendar-icon i {
+    margin-right: 5px; 
+    font-size: 18px; 
+    color: #888; 
+}
+
+.calendar-icon span {
+    font-size: 14px; 
+    color: #888; 
+}
+
+.additional-text {
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+.additional-textsw {
+
+    font-size: 12px; 
+}
+
+
+.additional-texts {
+    display: none;
+    font-size: 12px; 
+}
+
+#toggleButton {
+    padding: 8px 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 10px; 
+}
+
+#toggleButton:hover {
+    background-color: black;
+}
+
+.centered-image {
+    display: flex;
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    cursor: pointer;
+    
+    
+}
+
+
+
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: absolute;
+    margin: 20px;
+}
+
+.product {
+    position : absolute;
+    width: 45%; 
+    top : 40px;
+    box-sizing: border-box;
+}
+
+.product img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.products-container p {
+    /* Tu môžete pridať štýly podľa vašich požiadaviek */
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+    /* Ďalšie vlastnosti podľa vašich potrieb */
+}
+
+
+
+    
+
+::-webkit-scrollbar {
+    width: 15px; /* Šířka scrollbaru */
+}
+
+/* Tloušťka scrollbaru */
+::-webkit-scrollbar-thumb {
+    background-color: #888; /* Barva pozadí scrollbaru */
+    border-radius: 10px; /* Zaoblení rohů */
+}
+
+/* Barva pozadí scrollbaru při najetí myši */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Barva pozadí scrollbaru při najetí myši */
+}
+
+/* Paticka */
+::-webkit-scrollbar-corner {
+    background: #fff; /* Barva pozadí patičky */
+}
+
+        body {
+            padding-bottom: 4px; 
+            margin: 0; 
+            
+        }
+
+        
+
+    footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(100);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-links a {
+  padding: 5px;
+  display: block;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: black; /* Barva textu */
+}
+   
+
+.custom-scrollbar-footer {
+    height: 200px; /* Výška patičky */
+    background-color: #fff; /* Barva pozadí patičky */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Z-index, aby byla patička navrchu */
+    display: none; /* Patička je na začátku skrytá */
+}
+
+footer.active {
+    transform: translateY(calc(100% - 2000px)); /* Paticka sa zobrazí pri posunutí na 0 */
+  }

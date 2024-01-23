@@ -1,4 +1,9 @@
+   
+
+
 <?php
+
+
 session_start(); // Start the session
 
 // Function to validate phone number format
@@ -26,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: index.php");
         exit(); // Make sure to exit after sending the header
     } else {
-        echo "<p>Login failed. Please check your credentials.</p>";
+        echo "<p>Nesprávne prihlasovanie: Zlé prihlasovacie údaje!!!</p>";
     }
 }
 ?>
@@ -36,16 +41,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>Prihlásenie používateľa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="login.css">  
 </head>
 <body>
-    <h2>User Login</h2>
+    <h2>Prihlásenie používateľa</h2>
 
     <form method="post" action="login.php">
         Email: <input type="text" name="email" required><br>
-        Password: <input type="password" name="password" required><br>
-        <input type="submit" value="Login">
+        Heslo: <input type="password" name="password" required><br>
+        <input type="submit" value="Prihlásiť">
     </form>
-    <a href="register.php">register</a>
+    <a href="register.php">Registrovať</a>
+    <p><a href="index.php">Prejsť na hlavnú stránku</a></p>
 </body>
 </html>

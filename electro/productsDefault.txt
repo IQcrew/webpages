@@ -1,0 +1,21 @@
+INSERT INTO products (category, name, price, available_quantity, description, image_path)
+VALUES
+    ('Tablet', 'Tablet 1', 299.99, 10, 'Vynikajúci tablet s vysokým výkonom a krásnym displejom.', 'tablet1.jpg'),
+    ('Tablet', 'Tablet 2', 349.99, 15, 'Elegantný tablet s dlhou výdržou batérie a kvalitným fotoaparátom.', 'tablet2.jpg'),
+    ('Tablet', 'Tablet 3', 279.99, 8, 'Kompaktný tablet s rýchlym procesorom a prehľadným operačným systémom.', 'tablet3.jpg'),
+    ('Tablet', 'Tablet 4', 399.99, 12, 'Výkonný tablet s vysokým rozlíšením displeja a štýlovým dizajnom.', 'tablet4.jpg'),
+    
+    ('Mobile', 'Mobil 1', 499.99, 20, 'Moderný smartfón s veľkým displejom a vysokým výkonom.', 'mobile1.jpg'),
+    ('Mobile', 'Mobil 2', 599.99, 18, 'Vodeodolný mobil s vynikajúcim fotoaparátom a rýchlym nabíjaním.', 'mobile2.jpg'),
+    ('Mobile', 'Mobil 3', 449.99, 25, 'Elegantný mobil so štíhlym dizajnom a dlhou výdržou batérie.', 'mobile3.jpg'),
+    ('Mobile', 'Mobil 4', 679.99, 15, 'Vysokovýkonný mobil s bezrámovým displejom a inteligentnými funkciami.', 'mobile4.jpg'),
+
+    ('Laptop', 'Notebook 1', 899.99, 8, 'Výkonný notebook s rýchlym procesorom a veľkým úložným priestorom.', 'laptop1.jpg'),
+    ('Laptop', 'Notebook 2', 1099.99, 10, 'Notebook s vysokým rozlíšením displeja a špičkovou grafickou kartou.', 'laptop2.jpg'),
+    ('Laptop', 'Notebook 3', 799.99, 12, 'Kompaktný notebook s dlhou výdržou batérie a ľahkým dizajnom.', 'laptop3.jpg'),
+    ('Laptop', 'Notebook 4', 1299.99, 6, 'Profesionálny notebook s vysokým výkonom a odolným kovovým telom.', 'laptop4.jpg'),
+
+    ('PC', 'Počítač 1', 1499.99, 5, 'Výkonný stolný počítač s moderným procesorom a veľkou pamäťou.', 'pc1.jpg'),
+    ('PC', 'Počítač 2', 1799.99, 3, 'Gamingový počítač s vysokým výkonom a špeciálnou grafickou kartou.', 'pc2.jpg'),
+    ('PC', 'Počítač 3', 1299.99, 7, 'Multimediálny počítač s kvalitným zvukom a veľkým úložným priestorom.', 'pc3.jpg'),
+    ('PC', 'Počítač 4', 1599.99, 6, 'Kancelársky počítač so vstavaným optickým mechanizmom a rýchlym procesorom.', 'pc4.jpg');

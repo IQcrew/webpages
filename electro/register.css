@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px; /* Prostor pod nadpisem */
+    white-space: nowrap; /* Text nebude zalomen na nový řádek */
+    overflow: hidden; /* Skryje přebytečný text, který by se nevešel */
+    text-overflow: ellipsis; /* Zobrazí tři tečky, pokud je text příliš dlouhý */
+}
+
+form {
+    max-width: 6000px; /* Prispôsob šírke formulára podľa potreby */
+    background: #fff;
+    padding: 110px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dva sloupce pro pole vedle sebe */
+    gap: 20px; /* Mezera mezi prvky */
+}
+
+form input {
+    width: 100%; /* Šířka pole na 100% šířky sloupce */
+}
+
+input[type="submit"] {
+    grid-column: span 2; /* Tlačítko zabere oba sloupce */
+    background-color: #737373;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #fc0404;
+}
+
+p,a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Optional: Add styles for form validation error messages */
+form p.error-message {
+    color: red;
+    text-align: center;
+}

@@ -82,7 +82,7 @@
         </a>
     </div>
     <div class="category-item">
-        <a href="index.php?category=Laptopy">
+        <a href="index.php?category=Laptop">
             <i class="fas fa-laptop"></i>
             Notebooky
         </a>
@@ -120,7 +120,7 @@ if ($result->num_rows > 0) {
     echo '<div class="products-container" style="display: flex; flex-wrap: wrap;">';
 
     while ($row = $result->fetch_assoc()) {
-        echo '<div class="product" style="width: 30%; margin: 0 1%; box-sizing: border-box;">';
+        echo '<div class="product">';
         echo '<a href="product.php?product_id=' . $row["product_id"] . '">';
         echo '<img src="imgs/' . $row["image_path"] . '" alt="' . $row["name"] . '" style="height: 220px; width: 220px;">';
         echo '</a>';

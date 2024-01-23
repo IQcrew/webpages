@@ -11,7 +11,7 @@
 
 </head>
 
-    
+
     
 
 
@@ -25,8 +25,8 @@
                     <div class="logo-icon">
                     <i class="fas fa-mobile-alt"></i>
 
-                        <form action="/vyhladavanie" method="GET">
-                        <input type="text" placeholder="🔍︎ Vyhľadať..." name="query">
+                        <form action="index.php" method="GET">
+                        <input type="text" placeholder="🔍︎ Vyhľadať..." name="search">
                         <button type="submit">Hľadať</button>
                     
 
@@ -48,7 +48,7 @@
                 </li>
                 
                 <li class="white-bar">
-                <a href="SOČ - E-Elektonics.php">Domov </a>
+                <a href="index.php">Domov </a>
                 <a href="info.php">Info o nás </a>
         
                 </li>
@@ -62,101 +62,97 @@
     </header>
    
     
-<div class="categories">
-                        <div class="category-item">
-                            <a href="pocitace.php">  
-                                <i class="fas fa-desktop"></i>
-                                Počítače
-                            
-                        </div>
-                        <div class="category-item" href ="mobli.php">
-                            <a href="mobili.php"> 
-                                <i class="fas fa-mobile-alt"></i>
-                                Mobily
-                            
-                        </div>
-                        <div class="category-item">
-                            <a href="tablety.php"> 
-                                <i class="fas fa-tablet"></i>
-                                Tablety
-                            
-                        </div>
-                        <div class="category-item">
-                            <a href="notebooky.php">
-                                <i class="fas fa-laptop"></i>
-                                Notebooky
-                            
-                        </div>
+    <div class="categories">
+    <div class="category-item">
+        <a href="index.php?category=PC">
+            <i class="fas fa-desktop"></i>
+            Počítače
+        </a>
+    </div>
+    <div class="category-item">
+        <a href="index.php?category=Mobile">
+            <i class="fas fa-mobile-alt"></i>
+            Mobily
+        </a>
+    </div>
+    <div class="category-item">
+        <a href="index.php?category=Tablet">
+            <i class="fas fa-tablet"></i>
+            Tablety
+        </a>
+    </div>
+    <div class="category-item">
+        <a href="index.php?category=Laptop">
+            <i class="fas fa-laptop"></i>
+            Notebooky
+        </a>
+    </div>
 </div>
-<br>
 
+</div>
 <div class="products-container"style="
     bottom: 0px;
-    top: 105px;
+    top: 715px;
     right: 0px;
-    left: 100px;">
-        <div class="product">
-        <a href="samsung.php">
-            <img src="apple.jpg" alt="Produkt 1" style="height: 220px;">
-        </a>
-            <p style="font-size: 18px; ">
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">iPad Air M1 256 GB WiFi</span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Dostupnosť: Na sklade 4ks</span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Cena:  900€</span> 
-            </p>
-        
-        </div>
+    left: 80px;">
+<?php
+include('db_connection.php');
 
-        <div class="product" >
-        <a href="samsung.php">
-            <img src="honor.jpg" alt="Produkt 2"style="height: 220px;">
-        </a>
-            <p style="font-size: 18px; ">
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">HONOR Pad X9 4 GB/128 GB </span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Dostupnosť: Na sklade 2ks</span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Cena:  190€</span>
-        
-            </p>
-        
-        </div>
+// Get the selected category from the URL
+$category = isset($_GET['category']) ? $_GET['category'] : '';
+// Get the search query from the URL
+$searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
 
-        <div class="product" >
-        <a href="samsung.php">
-            <img src="samsungt.jpg" alt="Produkt 3"style="height: 220px;">
-        </a>
-            <p style="font-size: 18px; "> 
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Samsung Galaxy Tab S9 FE</span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Dostupnosť: Na sklade 3ks</span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Cena:  600€</span> 
-            </p>
-        
-        </div>
+// Fetch products from the specified category and matching the search query
+$sql = "SELECT * FROM products WHERE 1";
+if ($category != '') {
+    $sql .= " AND category = '$category'";
+}
+if ($searchQuery != '') {
+    $sql .= " AND name LIKE '%$searchQuery%'";
+}
 
-        <div class="product" >
-        <a href="samsung.php">
-            <img src="lenovo.jpg" alt="Produkt 4" style="height: 220px;">
-        </a>
-            <p style="font-size: 18px; ">
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Lenovo Tab P12  </span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Dostupnosť: Na sklade 4ks</span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Cena:  400€</span> 
-            </p>
-        
-        </div>
+$result = $conn->query($sql);
 
-        <div class="product" >
-        <a href="samsung.php">
-            <img src="ipad.jpg" alt="Produkt 5"style="height: 220px;">
-        </a>
-            <p style="font-size: 18px; ">
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">iPad mini 64 GB</span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Dostupnosť: Na sklade 4ks</span><br><br>
-                <span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Cena:  600€</span>
-            </p>
-        
-        </div>
+// Check if there are products
+if ($result->num_rows > 0) {
+    // Output the products using a foreach loop
+    echo '<div class="products-container" style="display: flex; flex-wrap: wrap;">';
 
-    </div>
+    $counter = 0; // Initialize a counter variable
+
+    while ($row = $result->fetch_assoc()) {
+        // Display only 6 products
+        if ($counter < 6) {
+            echo '<div class="product" >';
+            echo '<a href="product.php?product_id=' . $row["product_id"] . '">';
+            echo '<img src="imgs/' . $row["image_path"] . '" alt="' . $row["name"] . '" style="height: 250px; width: 220px;">';
+            echo '</a>';
+            echo '<p style="font-size: 20px; ">';
+            echo '<span style="border: 2px solid black; padding: 5px; border-radius: 8px;">' . $row["name"] . '</span><br><br>';
+            echo '<span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Dostupnosť: Na sklade ' . $row["available_quantity"] . 'ks</span><br><br>';
+            echo '<span style="border: 2px solid black; padding: 5px; border-radius: 8px;">Cena: ' . $row["price"] . '€</span>';
+            echo '</p>';
+            echo '</div>';
+
+            $counter++; // Increment the counter
+        } else {
+            break; // Break out of the loop if 6 products have been displayed
+        }
+    }
+    echo '</div>';
+} else {
+    // If there are no products
+    echo 'No products found for the specified category.';
+}
+
+// Close the connection
+$conn->close();
+?>
+
+</div>
+
+
 
 <div class="category-news">
         <span class="red-line"></span><span class="news-text">Novinky</span>
@@ -222,10 +218,10 @@
     
         <div class="footer-links">
             <div class="footer-column">
-            <a href="pocitace.php" ><i class="fas fa-desktop"></i>Počítače</a>
-                <a href="notebooky.php"><i class="fas fa-laptop"></i>Notebooky</a>
-                <a href="tv.php"> <i class="fas fa-tv"></i>TV</a>
-                <a href="mobili.php"><i class="fas fa-mobile-alt"></i>Mobily</a>
+            <a href="index.php?category=PC"> <i class="fas fa-desktop"></i>Počítače</a>
+                <a href="index.php?category=Laptop"><i class="fas fa-laptop"></i>Notebooky</a>
+                <a href="index.php?category=Tablet"> <i class="fas fa-tablet"></i>Tablety</a>
+                <a href="index.php?category=Mobile"><i class="fas fa-mobile-alt"></i>Mobily</a>
             </div>
             <div class="footer-column">
                 <a href="profil.php"><i class="fas fa-user"></i>Môj profil</a>
