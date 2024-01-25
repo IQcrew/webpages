@@ -6,81 +6,41 @@ if ($_SESSION['email'] != 'admin@admin.com') {
     header("Location: index.php");
     exit();
 }
-
-// Check if the form is submitted for updating destination
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['destination_id'])) {
-    $destination_id = $_GET['destination_id'];
-
-    // Retrieve destination details for the given ID
-    $query = "SELECT * FROM trips WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('i', $destination_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $destination = $result->fetch_assoc();
-    $stmt->close();
-
-    // Process the form submission for updating destination
-    if (isset($_GET['update_destination'])) {
-        $new_destination_name = $_GET['new_destination_name'];
-        $new_description = $_GET['new_description'];
-        $new_price = $_GET['new_price'];
-
-        // Update destination details in the database
-        $update_query = "UPDATE trips 
-                         SET destination_name = ?, description = ?, price = ? 
-                         WHERE id = ?";
-        $update_stmt = $conn->prepare($update_query);
-        $update_stmt->bind_param('ssdi', $new_destination_name, $new_description, $new_price, $destination_id);
-
-        if ($update_stmt->execute()) {
-            // Handle image upload if a new image is provided
-            if (!empty($_FILES['new_image']['name'])) {
-                $uploadDir = 'images/uploads/';
-                $uploadedFile = $uploadDir . basename($_FILES['new_image']['name']);
-                move_uploaded_file($_FILES['new_image']['tmp_name'], $uploadedFile);
-
-                // Update the image path in the database
-                $update_image_query = "UPDATE trips SET image_path = ? WHERE id = ?";
-                $update_image_stmt = $conn->prepare($update_image_query);
-                $update_image_stmt->bind_param('si', $uploadedFile, $destination_id);
-                $update_image_stmt->execute();
-                $update_image_stmt->close();
-            }
-
-            echo "Destination updated successfully.";
-        } else {
-            echo "Error updating destination: " . $update_stmt->error;
-        }
-
-        $update_stmt->close();
-    }
-
-    // Process the form submission for deleting destination
-    if (isset($_GET['delete_destination'])) {
-        // Delete the destination from the database
-        $delete_query = "DELETE FROM trips WHERE id = ?";
-        $delete_stmt = $conn->prepare($delete_query);
-        $delete_stmt->bind_param('i', $destination_id);
-
-        if ($delete_stmt->execute()) {
-            echo "Destination deleted successfully.";
-            // Redirect to destinations.php or any other page after deletion
-            header('Location: destinations.php');
-            exit();
-        } else {
-            echo "Error deleting destination: " . $delete_stmt->error;
-        }
-
-        $delete_stmt->close();
-    }
-} else {
-    // Redirect to destinations.php if accessed without proper parameters
-    header('Location: destinations.php');
+if(isset($_POST['redirect_button'])){
+    // Redirect to another page
+    header("Location: admin_nova_destinacia.php");
     exit();
 }
+// Define default values for filters
+$searchTerm = '';
+$minPrice = 0;
+$maxPrice = 10000;
+$searchString = '';
+
+// Handle form submissions for filtering
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+    $searchString = $searchTerm;
+    $minPrice = isset($_GET['min_price']) ? $_GET['min_price'] : 0;
+    $maxPrice = isset($_GET['max_price']) ? $_GET['max_price'] : 10000;
+}
+
+// Query to retrieve destinations based on filters
+$query = "SELECT * FROM trips 
+          WHERE (destination_name LIKE ? 
+          OR description LIKE ?)
+          AND price BETWEEN ? AND ?";
+$stmt = $conn->prepare($query);
+$searchTerm = '%' . $searchTerm . '%';
+$stmt->bind_param('ssdd', $searchTerm, $searchTerm, $minPrice, $maxPrice);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Fetch destinations
+$destinations = $result->fetch_all(MYSQLI_ASSOC);
 
 // Close the database connection
+$stmt->close();
 $conn->close();
 ?>
 
@@ -89,39 +49,95 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Destination</title>
+    <title>Destinations</title>
+    <script>
+        // JavaScript to ensure min and max values are valid
+        function updateMinMax() {
+            var minPrice = document.getElementById('min_price');
+            var maxPrice = document.getElementById('max_price');
+
+            if (parseFloat(minPrice.value) > parseFloat(maxPrice.value)) {
+                minPrice.value = maxPrice.value;
+            }
+
+            if (parseFloat(maxPrice.value) < parseFloat(minPrice.value)) {
+                maxPrice.value = minPrice.value;
+            }
+        }
+    </script>
     <style>
-        /* Your existing CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form label {
+            margin-right: 10px;
+        }
+
+        form input {
+            margin-bottom: 10px;
+        }
+
+        div.destination {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        div.destination img {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
+<form method="post">
+    <input type="submit" name="redirect_button" value="Nova Destinacia">
+</form>
+<h2>Destinations</h2>
 
-<h2>Edit Destination</h2>
+<!-- Search Bar and Filters Form -->
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get" oninput="updateMinMax()">
+    <label for="search">Search:</label>
+    <input type="text" name="search" value="<?php echo $searchString; ?>">
 
-<!-- Form for editing destination details -->
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get" enctype="multipart/form-data">
-    <input type="hidden" name="destination_id" value="<?php echo $destination_id; ?>">
+    <label for="min_price">Min Price:</label>
+    <input type="number" name="min_price" id="min_price" min="0" value="<?php echo $minPrice; ?>">
 
-    <label for="new_destination_name">New Destination Name:</label>
-    <input type="text" name="new_destination_name" value="<?php echo htmlspecialchars($destination['destination_name']); ?>" required>
+    <label for="max_price">Max Price:</label>
+    <input type="number" name="max_price" id="max_price" min="0" value="<?php echo $maxPrice; ?>">
 
-    <label for="new_description">New Description:</label>
-    <textarea name="new_description" required><?php echo htmlspecialchars($destination['description']); ?></textarea>
-
-    <label for="new_price">New Price:</label>
-    <input type="text" name="new_price" value="<?php echo $destination['price']; ?>" required>
-
-    <label for="new_image">New Image:</label>
-    <input type="file" name="new_image" accept="image/*">
-
-    <input type="submit" name="update_destination" value="Update Destination">
+    <input type="submit" value="Apply Filters">
 </form>
 
-<!-- Form for deleting destination -->
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get">
-    <input type="hidden" name="destination_id" value="<?php echo $destination_id; ?>">
-    <input type="submit" name="delete_destination" value="Delete Destination" onclick="return confirm('Are you sure you want to delete this destination?');">
-</form>
+<!-- Display Destinations -->
+<?php foreach ($destinations as $destination): ?>
+    <div class="destination">
+        <h3><?php echo htmlspecialchars($destination['destination_name']); ?></h3>
+        <p>Price: <?php echo number_format($destination['price'], 2); ?>€</p>
+        <img src="<?php echo htmlspecialchars($destination['image_path']); ?>" alt="Destination Image" width="200">
+        <form action="admin_destinacia_detaily.php" method="get" style="margin-top: 10px;">
+            <input type="hidden" name="destination_id" value="<?php echo $destination['id']; ?>">
+            <input type="submit" value="Edit">
+        </form>
+    </div>
+<?php endforeach; ?>
 
 </body>
 </html>

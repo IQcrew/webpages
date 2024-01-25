@@ -1,7 +1,11 @@
 <?php
 // Include the database connection file
 include('db_connection.php');
-
+if(isset($_POST['redirect_button'])){
+    // Redirect to another page
+    header("Location: admin.php");
+    exit();
+}
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate and sanitize user inputs
@@ -46,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param('sssd', $destination_name, $uploadedFile, $description, $price);
 
             if ($stmt->execute()) {
-                echo "Destination created successfully.";
+                header("Location: admin.php");
             } else {
                 echo "Error creating destination: " . $stmt->error;
             }
@@ -68,6 +72,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Destination</title>
+    
 </head>
 <body>
 
@@ -88,6 +93,8 @@ $conn->close();
 
     <input type="submit" value="Create Destination">
 </form>
-
+<form method="post">
+    <input type="submit" name="redirect_button" value="Späť">
+</form>
 </body>
 </html>
