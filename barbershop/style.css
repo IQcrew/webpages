@@ -103,7 +103,7 @@ select {
     width: 70%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 .customButton{
     display : flex ;
@@ -115,8 +115,8 @@ input[type="submit"] {
     margin-right: auto;
     margin-left: auto;
     padding: 10px 20px;
-    background-color: #662B00;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -124,7 +124,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #161B00;
+    background-color: #ffae00;
 }
 label{
     font-family: 'Dancing Script', cursive;

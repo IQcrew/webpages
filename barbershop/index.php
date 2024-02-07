@@ -135,7 +135,7 @@ $conn->close();
             <label for="phoneNumber">Telefónne číslo:</label>
             <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
 
-            <input type="submit" value="Odoslať">
+            <input type="submit" value="Rezervovať sa">
         </form>
 
         </div>
@@ -157,7 +157,7 @@ $conn->close();
 
             <h2>Kontaktné informácie</h2>
             <p>Pre otázky nás môžete kontaktovať:</p>
-            <p>Email: info@holicka.com</p>
+            <p>Email: barbershopsoc@gmail.com</p>
             <p>Telefón: +421 123 456-789</p>
             
             <h2>Adresa</h2>
