@@ -98,7 +98,7 @@ function checkWorkingDay() {
                     continue;
                 }
                 if(myArray.includes(optionsList[i].toString())) { continue;}
-                if(datesHaveSameDayMonthYear(new Date(), selectedDate) && optionsList[i] <= new Date().getHours()){continue;}
+                if(convertToDateFormat(new Date()) === convertToDateFormat(selectedDate) && optionsList[i] <= new Date().getHours()){continue;}
                 var option = document.createElement("option");
                 option.text = optionsList[i];
                 comboBox.add(option);
@@ -108,11 +108,7 @@ function checkWorkingDay() {
             console.error('Error:', error);
         });
 }
-function datesHaveSameDayMonthYear(date1, date2) {
-    return date1.getDay() === date2.getDay() &&
-           date1.getMonth() === date2.getMonth() &&
-           date1.getFullYear() === date2.getFullYear();
-}
+
 function getReservationsForDay(date) {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();

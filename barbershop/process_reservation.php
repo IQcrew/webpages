@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>Vážený/á $firstName $lastName,</p>
                 <p>Ďakujeme Vám za rezerváciu u nás. Vaša rezervácia bola potvrdená s nasledujúcimi údajmi:</p>
                 <p><strong>Dátum:</strong> $date</p>
-                <p><strong>Hodina:</strong> $hour</p>
+                <p><strong>Hodina:</strong> ".$hour."</p>
                 <p><strong>Produkt:</strong> $product</p>
                 <p>Tešíme sa na Vašu návštevu. Ak máte nejaké otázky alebo potrebujete zmeniť Vašu rezerváciu, neváhajte nás kontaktovať.</p>
                 <a href='http://localhost/barbershop/zrusenie_rezervacie.php?key=$keyString' class='btn'>Zrušiť Rezerváciu</a>
