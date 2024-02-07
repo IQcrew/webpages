@@ -84,10 +84,10 @@ function checkWorkingDay() {
     var optionsList = [9, 10, 11, 12, 13, 14, 15, 16];
     const selectedDate = new Date(document.getElementById('date').value);
     const dayOfWeek = selectedDate.getDay();
-    var comboBox = document.getElementById("myComboBox");
+    var comboBox = document.getElementById("hour");
     comboBox.innerHTML = "";
 
-    getReservationsForDay(convertToDateFormat(selectedDate))
+    getReservationsForDay()
         .then(bookedDates => {
             const myArray = [];
             for (var i = 0; i < bookedDates.length; i++){
@@ -98,7 +98,7 @@ function checkWorkingDay() {
                     continue;
                 }
                 if(myArray.includes(optionsList[i].toString())) { continue;}
-
+                if(datesHaveSameDayMonthYear(new Date(), selectedDate) && optionsList[i] <= new Date().getHours()){continue;}
                 var option = document.createElement("option");
                 option.text = optionsList[i];
                 comboBox.add(option);
@@ -108,7 +108,11 @@ function checkWorkingDay() {
             console.error('Error:', error);
         });
 }
-
+function datesHaveSameDayMonthYear(date1, date2) {
+    return date1.getDay() === date2.getDay() &&
+           date1.getMonth() === date2.getMonth() &&
+           date1.getFullYear() === date2.getFullYear();
+}
 function getReservationsForDay(date) {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
@@ -181,13 +185,13 @@ $conn->close();
             <input type="date" id="date" name="date" min="<?php echo date('Y-m-d'); ?>" required oninput="checkWorkingDay()">
 
             <br>
-            <label for="myComboBox">Select an hour:</label>
-            <select id="myComboBox"></select>
+            <label for="hour">Select an hour:</label>
+            <select id="hour" name="hour"></select>
             <br>
             <label for="product">Choose a product:</label>
             <select name="product" id="product">
                 <?php foreach ($products as $product): ?>
-                    <option value="<?php echo $product['product_id']; ?>"><?php echo $product['name']." ".$product['price']."€"; ?></option>
+                    <option value="<?php echo $product['name']." ".$product['price']."€"; ?>"><?php echo $product['name']." ".$product['price']."€"; ?></option>
                 <?php endforeach; ?>
             </select>
             <br>

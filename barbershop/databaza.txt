@@ -24,8 +24,7 @@ CREATE TABLE IF NOT EXISTS Reservations (
     LastName VARCHAR(50) NOT NULL,
     Email VARCHAR(255) NOT NULL,
     PhoneNumber VARCHAR(15) NOT NULL,
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    UserID INT
+    DeleteKey VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE products (
