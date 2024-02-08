@@ -105,6 +105,7 @@ select {
     border: 1px solid #ccc;
     border-radius: 15px;
 }
+
 .customButton{
     display : flex ;
     flex-direction : column ;
@@ -148,7 +149,7 @@ iframe {
     background-color: #9e4a00 ;
 }
 footer {
-    background-color: #000;
+    background-color: #0a1921;
     color: #fff; 
     text-align: center; 
     width: 100%;

@@ -15,12 +15,11 @@ require 'phpmailer/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-// Include the database connection file
+
 include 'db_connection.php';
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
+
     $keyString = getRandomString(19);
     $date = $_POST['date'];
     $hour = $_POST['hour'];
@@ -30,24 +29,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $phoneNumber = $_POST['phoneNumber'];
 
-    // Insert the reservation into the database
-    $sql = "INSERT INTO Reservations (Time, Hour, Product, FirstName, LastName, Email, PhoneNumber, DeleteKey)
+
+    $sql = "INSERT INTO Reservations (Time, Hour, Sluzba, FirstName, LastName, Email, PhoneNumber, DeleteKey)
             VALUES ('$date', '$hour', '$product', '$firstName', '$lastName', '$email', '$phoneNumber', '$keyString')";
 
     if ($conn->query($sql) === TRUE) {
 
         $mail = new PHPMailer();
 
-        // SMTP configuration
+
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Gmail SMTP server
+        $mail->Host = 'smtp.gmail.com'; 
         $mail->SMTPAuth = true;
-        $mail->Username = 'barbershopsoc@gmail.com'; // Your Gmail address
-        $mail->Password = 'ozjrofbpxvcxldqx'; // Your Gmail password
+        $mail->Username = 'barbershopsoc@gmail.com';
+        $mail->Password = 'ozjrofbpxvcxldqx'; 
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
-        // Sender and recipient settings
         $mail->setFrom('barbershopsoc@gmail.com', "Barber shop");
         $mail->addAddress($email, '$firstName');
 
@@ -117,7 +115,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
 
         $conn->close();
-        // Attempt to send the email
         if ($mail->send()) {
             header('Location: index.php');
             exit();

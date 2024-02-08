@@ -12,6 +12,7 @@
     </style>
 </head>
 <script>
+
 function checkWorkingDay() {
     var optionsList = [9, 10, 11, 12, 13, 14, 15, 16];
     const selectedDate = new Date(document.getElementById('date').value);
@@ -26,10 +27,13 @@ function checkWorkingDay() {
                 myArray.push(bookedDates[i]["Hour"]);
             }
             for (var i = 0; i < optionsList.length; i++) {
+                
                 if (dayOfWeek === 0 || dayOfWeek === 6 ) {
                     continue;
                 }
+                
                 if(myArray.includes(optionsList[i].toString())) { continue;}
+                
                 if(convertToDateFormat(new Date()) === convertToDateFormat(selectedDate) && optionsList[i] <= new Date().getHours()){continue;}
                 var option = document.createElement("option");
                 option.text = optionsList[i];
@@ -37,9 +41,10 @@ function checkWorkingDay() {
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Chyba:', error);
         });
 }
+
 
 function getReservationsForDay(date) {
     return new Promise((resolve, reject) => {
@@ -53,7 +58,7 @@ function getReservationsForDay(date) {
                     var reservations = JSON.parse(xhr.responseText);
                     resolve(reservations);
                 } else {
-                    console.error('Error fetching reservations:', xhr.status, xhr.statusText);
+                    console.error('Chyba pri načítaní rezervácií:', xhr.status, xhr.statusText);
                     reject(xhr.statusText);
                 }
             }
@@ -63,12 +68,13 @@ function getReservationsForDay(date) {
         xhr.send();
     });
 }
+
+
 function convertToDateFormat(inputDate) {
     const dateObject = new Date(inputDate);
     
-  
     if (isNaN(dateObject.getTime())) {
-        console.error('Invalid date format');
+        console.error('Neplatný formát dátumu');
         return null;
     }
 
@@ -84,13 +90,13 @@ function convertToDateFormat(inputDate) {
 include 'db_connection.php';
 
 
-$sql = "SELECT product_id, name,price FROM products";
+$sql = "SELECT sluzba_id, name,price FROM sluzby";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    $products = $result->fetch_all(MYSQLI_ASSOC);
+    $sluzby = $result->fetch_all(MYSQLI_ASSOC);
 } else {
-    $products = [];
+    $sluzby = [];
 }
 
 $conn->close();
@@ -104,7 +110,7 @@ $conn->close();
     </header>
 
 
-    <section style="width:100%;">
+    <section style="width:100%;background: linear-gradient(30deg, #0a1921, #35666f);">
         <div class="formSection">
         <h2>Objednajte si termín</h2>
         <p>Vyplňte nižšie uvedený formulár a objednajte si termín.</p>
@@ -116,9 +122,9 @@ $conn->close();
             <label for="hour">Vyberte hodinu:</label>
             <select id="hour" name="hour"></select>
             <br>
-            <label for="product">Vyberte produkt:</label>
+            <label for="product">Vyberte službu:</label>
             <select name="product" id="product">
-                <?php foreach ($products as $product): ?>
+                <?php foreach ($sluzby as $product): ?>
                     <option value="<?php echo $product['name']." ".$product['price']."€"; ?>"><?php echo $product['name']." ".$product['price']."€"; ?></option>
                 <?php endforeach; ?>
             </select>
@@ -170,7 +176,7 @@ $conn->close();
     </section>
 
     <footer>
-    <p>&copy; 2024 Barber shop. All rights reserved. | Martin Ďurana</p>
+    <p>&copy; 2024 Barber shop. Všetky práva vyhradené. | Martin Ďurana</p>
 </footer>
 </body>
 

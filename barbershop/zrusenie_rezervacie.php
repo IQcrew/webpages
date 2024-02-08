@@ -52,15 +52,11 @@
 
 <div class="container">
     <?php
-    // Include the database connection file
     include 'db_connection.php';
 
-    // Check if the reservation ID is provided in the GET request
     if (isset($_GET['key'])) {
-        // Sanitize the input to prevent SQL injection
         $reservationKey = $_GET['key'];
 
-        // Delete the reservation from the database
         $sql = "DELETE FROM Reservations WHERE DeleteKey = '$reservationKey';";
 
         if ($conn->query($sql) === TRUE) {
@@ -72,12 +68,10 @@
         echo '<div class="error-msg">No reservation ID provided</div>';
     }
 
-    // Close the database connection
     $conn->close();
     ?>
 
     <div class="button-container">
-        <!-- Button for redirection to index page -->
         <button onclick="window.location.href = 'index.php';">Go to Index</button>
     </div>
 </div>
