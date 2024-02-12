@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap">
     <link rel="stylesheet" href="src/button.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" 
+     type="image/png" 
+     href="src/logo.png">
     <title>Holičstvo</title>
     <style>
 
@@ -175,9 +178,7 @@ $conn->close();
         </div>
     </section>
 
-    <footer>
-    <p>&copy; 2024 Barber shop. Všetky práva vyhradené. | Martin Ďurana</p>
-</footer>
+    <?php include "footer.html"; ?>
 </body>
 
 </html>

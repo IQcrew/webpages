@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($sql) === TRUE) {
         $_SESSION['loggedin'] = true;
         $_SESSION['email'] = $email;
-        header("location: sluzby.php");
+        header("location: produkty.php");
         exit;
     } else {
         echo "Chyba: " . $sql . "<br>" . $conn->error;
@@ -25,6 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" 
+     type="image/png" 
+     href="src/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrácia</title>
     <style>
@@ -90,18 +93,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="email">Email:</label>
         <input type="email" name="email" required>
+        <label for="password">Heslo:</label>
+        <input type="password" name="password" required>
         <label for="firstName">Meno:</label>
         <input type="text" name="firstName" required>
         <label for="lastName">Priezvisko:</label>
         <input type="text" name="lastName" required>
         <label for="phoneNumber">Telefónne číslo:</label>
         <input type="text" name="phoneNumber" required>
-        <label for="password">Heslo:</label>
-        <input type="password" name="password" required>
         <input type="submit" value="Registrovať sa">
     </form>
     <div class="index-link">
-        <a href="index.php">Späť</a>
+        <a href="produkty.php">Späť</a>
     </div>
 </body>
 </html>

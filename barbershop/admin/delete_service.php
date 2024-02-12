@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM sluzby WHERE sluzba_id = $sluzbaID";
 
     if ($conn->query($sql) === TRUE) {
-        header('Location: sluzby.php');
+        header('Location: produkty.php');
         exit();
     } else {
         echo "Error deleting product: " . $conn->error;
