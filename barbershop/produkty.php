@@ -16,7 +16,7 @@
 
         .product-card {
             flex-basis: calc(20% - 20px); 
-            background-color: #ffffff;
+            background-color: #ffffff3d;
             max-width: 300px;
             border-radius: 16px; 
             padding: 30px;
@@ -69,10 +69,9 @@
         }
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             padding: 0px;
-            background: linear-gradient(-45deg, #112633, #163349, #23a6d5, #407885);
+            background: linear-gradient(-45deg, #009dff, #2c8897, #23a6d5, #0141ff);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             height: 100vh;
