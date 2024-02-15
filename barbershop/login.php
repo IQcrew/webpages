@@ -14,7 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['Password'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $email;
-            header("location: produkty.php");
+            if($email == "admin@it.com") {
+                header("location: admin/produkty.php");
+            }
+            else{
+                header("location: produkty.php");
+            }
             exit;
         } else {
             echo "Invalid password";

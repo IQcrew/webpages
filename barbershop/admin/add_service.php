@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO sluzby (name, price) VALUES ('$name', '$price')";
 
     if ($conn->query($sql) === TRUE) {
-        header('Location: produkty.php');
+        header('Location: sluzby.php');
         exit();
     } else {
         echo "Error adding product: " . $conn->error;

@@ -11,9 +11,9 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 INSERT INTO Users (Email, FirstName, LastName, PhoneNumber, Password)
-VALUES ('admin@it.com', 'Admin', 'User', '123456789', '$2y$10$PLWyBtK5D7Q4SVKud11Tbup.jU9tYrodeCRbUzaJ9WPXS65jpuUfy') --heslo: adminspsit
+VALUES ('admin@it.com', 'Admin', 'User', '123456789', '$2y$10$PLWyBtK5D7Q4SVKud11Tbup.jU9tYrodeCRbUzaJ9WPXS65jpuUfy')
 ON DUPLICATE KEY UPDATE UserID = UserID;
-
+--heslo: adminspsit
 
 CREATE TABLE IF NOT EXISTS Reservations (
     ReservationID INT PRIMARY KEY AUTO_INCREMENT,

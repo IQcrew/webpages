@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-
+<?php include 'header.php'; ?>
 <div class="container">
     <h2>Rezervácie</h2>
     <div class="button-container">
@@ -34,7 +34,8 @@
         <?php
         include '..\db_connection.php';
         include 'admin_auth.php';
-        $sql = "SELECT * FROM Reservations";
+        
+        $sql = "SELECT * FROM Reservations ORDER BY Time, Hour";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

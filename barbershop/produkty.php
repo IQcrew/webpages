@@ -108,6 +108,10 @@
 <div class="grid-container">
     <?php
     session_start();
+    if(isset($_SESSION['email']) && $_SESSION['email'] == "admin@it.com"){
+        header('Location: admin/produkty.php');
+        exit();
+    }
     include 'db_connection.php';
     include 'header.php';
     $search_query = "";

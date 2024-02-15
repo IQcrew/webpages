@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding-top: 80px;
 }
 
 .container {
@@ -12,13 +12,13 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* Allow horizontal scroll if table is wider than container */
+    overflow-x: auto;
 }
 
 h2 {
     color: #333;
     margin-top: 0;
-    margin-bottom: 10px; /* Added for spacing consistency */
+    margin-bottom: 10px;
 }
 
 table {
@@ -30,22 +30,22 @@ table {
 
 th, td {
     border: 1px solid #ddd;
-    padding: 12px; /* Increased padding for better readability */
+    padding: 12px;
     text-align: left;
-    word-wrap: break-word; /* Wrap long text within cells */
+    word-wrap: break-word; 
 }
 
 th {
     background-color: #f2f2f2;
-    font-weight: bold; /* Make table header text bold */
+    font-weight: bold; 
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9; /* Alternate row background color */
+    background-color: #f9f9f9; 
 }
 
 tr:hover {
-    background-color: #f2f2f2; /* Highlight row on hover */
+    background-color: #f2f2f2; 
 }
 
 .button-container {
@@ -65,38 +65,4 @@ tr:hover {
 .button-container button:hover {
     background-color: #0056b3;
 }
-form {
-    margin-top: 20px;
-    text-align: center; /* Zarovnanie textu na stred */
-}
 
-/* Štýly pre formulár */
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333; /* Nastavenie farby popisu */
-}
-
-input[type="text"],
-input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box; /* Zaistenie, že padding a hranice sú zahrnuté v šírke */
-}
-
-input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
