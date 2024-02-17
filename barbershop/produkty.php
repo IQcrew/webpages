@@ -50,7 +50,7 @@
         }
 
         .product-price {
-            margin-top: 10px;
+            margin-top: 15px;
             margin-bottom: 20px;
             font-weight: bold;
         }
@@ -134,7 +134,9 @@
         while($row = $result->fetch_assoc()) {
             ?>
             <div class="product-card">
-                <img src="src/imagesUpload/<?php echo $row["Image"]; ?>" alt="<?php echo $row["Name"]; ?>" class="product-image">
+                <div style="height:210px;">
+                    <img src="src/imagesUpload/<?php echo $row["Image"]; ?>" alt="<?php echo $row["Name"]; ?>" class="product-image">
+                </div>
                 <div class="product-name"><?php echo $row["Name"]; ?></div>
                 <div class="product-description">
                 <?php
@@ -146,7 +148,7 @@
                 echo $description;
                 ?>
                 </div>
-                <div class="product-price"><?php echo $row["Price"]; ?>€</div>
+                <div class="product-price" ><?php echo $row["Price"]; ?>€</div>
                 <div class="customButton" >
                  <a href="produkt_detaily.php?id=<?php echo $row["ProductID"]; ?>" class="button type--A">
                 <div class="button__line"></div>
