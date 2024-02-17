@@ -24,6 +24,7 @@
             animation: gradient 15s ease infinite;
 
         }
+
         .customButton{
             display : flex ;
             justify-content : space-around ;
@@ -51,6 +52,7 @@
             background-color: #ffffff3d;
             border-radius: 16px; 
             padding: 30px;
+            margin-right: 20px;
             text-align: center;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
         }
@@ -103,14 +105,14 @@ if (isset($_GET['id'])) {
         ?>
         <div style="min-height:820px; margin-top: 80px;">
         <div class="product-details">
-            <img src="src/imagesUpload/<?php echo $row["Image"]; ?>" alt="<?php echo $row["Name"]; ?>" class="product-image">
-            <div style="width:50%">
+            <img src="src/imagesUpload/<?php echo $row["Image"]; ?>" alt="<?php echo $row["Name"]; ?>" class="product-image" style="padding: 20px; max-width: 100vh;">
+            <div style="width:50%;">
                 <div class="nadpis">
                     <h2><?php echo $row["Name"]; ?></h2>
                     <p>Cena: <?php echo $row["Price"]; ?>€</p>
                 </div>             
                 <div class="popis">
-                    <p><?php echo $row["Description"]; ?></p>
+                    <p><?php echo str_replace("\n","</br>",$row["Description"]); ?></p>
                     <div class="add-to-cart">
                         <form method="post" >
                         <button class="add-to-cart-btn">Pridať do košíka</button>

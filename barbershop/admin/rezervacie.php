@@ -16,14 +16,11 @@
 <?php include 'header.php'; ?>
 <div class="container">
     <h2>Rezervácie</h2>
-    <div class="button-container">
-        <button onclick="window.location.href = 'admin_panel.php';">Speť</button>
-    </div>
     <table>
         <tr>
         <th>ID</th>
         <th>Dátum</th>
-        <th>Hodina</th>
+        <th>Hodina</th>  
         <th>Produkt</th>
         <th>Meno</th>
         <th>Priezvisko</th>
@@ -60,6 +57,6 @@
         ?>
     </table>
 </div>
-
+<?php include "../footer.html"; ?> 
 </body>
 </html>

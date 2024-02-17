@@ -12,6 +12,7 @@
             justify-content: space-around;
             grid-gap: 20px;
             padding: 20px;
+            min-height: 80vh;
         }
 
         .product-card {
@@ -63,7 +64,7 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-
+        
         .view-details-button:hover {
             background-color: #0056b3;
         }
