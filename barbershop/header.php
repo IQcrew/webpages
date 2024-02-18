@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title>
     <style>
         header {
             background-color: #0a1921;
@@ -31,7 +30,7 @@
             font-weight: bold;
             padding: 20px;
         }
-        input[type="text"] {
+        .inp[type="text"] {
             padding: 12px; 
             border-radius: 25px;
             border: 1px solid #ccc;
@@ -41,12 +40,12 @@
             width: 250px; 
         }
 
-        input[type="text"]:focus,
-        input[type="text"]:hover {
+        .inp[type="text"]:focus,
+        .inp[type="text"]:hover {
             border-color: #007bff; 
         }
 
-        input[type="submit"] {
+        .inp[type="submit"] {
             margin: 10px;
             padding: 12px 24px;
             background-color: #0f3349;
@@ -58,7 +57,7 @@
             transition: background-color 0.3s ease; 
         }
 
-        input[type="submit"]:hover {
+        .inp[type="submit"]:hover {
             background-color: #0056b3; 
         }
 
@@ -70,7 +69,7 @@
             color: #888; 
             cursor: pointer;
         }
-        form {
+        .formSrch {
             display: flex;
             align-items: center;
             position: relative;
@@ -93,9 +92,9 @@
         <a href="index.php">
             <img src="src/logo_white.png" alt="Logo" class="logo">
         </a>
-        <form action="produkty.php" method="GET" >
-            <input type="submit" value="Vyhľadať">
-            <input type="text" id="search" name="search" value="" >
+        <form action="produkty.php" method="GET" class="formSrch">
+            <input type="submit" value="Vyhľadať" class="inp">
+            <input type="text" id="search" name="search" value="" class="inp">
         </form>
     </div>
     <div class="row">
@@ -105,6 +104,7 @@
         
         
         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+            echo '<a href="kosik.php" class="login-logout">Košík</a>';
             echo '<a href="profil.php" class="login-logout">Profil</a>';
             echo '<a href="logout.php" class="login-logout">Odhlásiť sa</a>';
         } else {

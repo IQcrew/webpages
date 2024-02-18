@@ -1,3 +1,38 @@
+<?php
+session_start();
+include 'db_connection.php';
+include 'header.php';
+
+if (isset($_GET['id'])) {
+    $productId = $_GET['id'];
+    if (!isset($_SESSION['email'])) {
+        header("Location: login.php");
+        exit();
+    }
+    $sql = "SELECT * FROM Products WHERE ProductID = $productId";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $quantity = $_POST['quantity'];
+            $userId = $_SESSION['email'];
+
+            $sql = "SELECT UserId FROM Users WHERE Email = '$userId'";
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            $userId = $row['UserId'];
+
+            $sql = "INSERT INTO Cart (UserID, ProductID, Quantity) VALUES ('$userId', '$productId', '$quantity')";
+            if ($conn->query($sql) === TRUE) {
+                header("Location: kosik.php");
+                exit();
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +54,7 @@
             margin: 0;
             background-color: #f4f4f4;
             padding: 0px;
-            background: linear-gradient(-45deg, #009dff, #2c8897, #23a6d5, #0141ff);
+            background: linear-gradient(-45deg, #009dff, #2c8897, #23a6d5, #01fffa);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
 
@@ -86,44 +121,33 @@
             font-size: 16px;
             background-color:#ffffff3d ;
         }
-    </style>
+        </style>
 </head>
 <body>
-<?php
-session_start();
-include 'db_connection.php';
-include 'header.php';
-
-if (isset($_GET['id'])) {
-    $productId = $_GET['id'];
-
-    $sql = "SELECT * FROM Products WHERE ProductID = $productId";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        ?>
-        <div style="min-height:820px; margin-top: 80px;">
+    <div style="min-height:820px; margin-top: 80px;">
         <div class="product-details">
             <img src="src/imagesUpload/<?php echo $row["Image"]; ?>" alt="<?php echo $row["Name"]; ?>" class="product-image" style="padding: 20px; max-width: 100vh;">
             <div style="width:50%;">
                 <div class="nadpis">
                     <h2><?php echo $row["Name"]; ?></h2>
                     <p>Cena: <?php echo $row["Price"]; ?>€</p>
-                </div>             
+                </div>
                 <div class="popis">
-                    <p><?php echo str_replace("\n","</br>",$row["Description"]); ?></p>
+                    <p><?php echo str_replace("\n", "</br>", $row["Description"]); ?></p>
                     <div class="add-to-cart">
-                        <form method="post" >
-                        <button class="add-to-cart-btn">Pridať do košíka</button>
-                        <input type="number" class="quantity" value="1" min="1">
+                        <form method="post">
+                            <button class="add-to-cart-btn" type="submit">Pridať do košíka</button>
+                            <input type="number" class="quantity" name="quantity" value="1" min="1">
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <?php
+    </div>
+    <?php include "footer.html"; ?> 
+</body>
+</html>
+<?php
     } else {
         echo "Product not found.";
     }
@@ -133,6 +157,3 @@ if (isset($_GET['id'])) {
 
 $conn->close();
 ?>
-<?php include "footer.html"; ?> 
-</body>
-</html>

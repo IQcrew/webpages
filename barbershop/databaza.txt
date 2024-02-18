@@ -61,3 +61,11 @@ CREATE TABLE IF NOT EXISTS Orders (
     OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
+CREATE TABLE IF NOT EXISTS orderitems (
+    OrderItemID INT PRIMARY KEY AUTO_INCREMENT,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT,
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);

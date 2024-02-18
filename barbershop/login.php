@@ -45,13 +45,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #f4f4f4;
             margin: 0;
             padding: 20px;
+            background: linear-gradient(-45deg, #009dff, #2c8897, #23a6d5, #01fffa);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
         h2 {
             color: #333;
             margin-bottom: 20px;
         }
         form {
-            background-color: #fff;
+            background-color: #ffffff3d;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -61,16 +75,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         label {
             display: block;
             margin-bottom: 10px;
+            
         }
         input[type="email"],
         input[type="password"],
         input[type="submit"] {
+            
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 0px solid #ccc;
             box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         input[type="submit"] {
             background-color: #007bff;
@@ -96,21 +113,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <h2 style="text-align:center;">Login</h2>
+    <h2 style="text-align:center;margin-top: 200px;">Login</h2>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="email">Email:</label>
         <input type="email" name="email" required>
         <label for="password">Heslo:</label>
         <input type="password" name="password" required>
         <input type="submit" value="Login">
+        <br/>
+        <div class="index-link">
+            <a href="registration.php">Registrovať sa</a>
+        </div>
+        <br />
+        <div class="index-link">
+            <a href="produkty.php">Späť</a>
+        </div>
     </form>
-    <br/>
-    <div class="index-link">
-        <a href="registration.php">Registrovať sa</a>
-    </div>
-    <br />
-    <div class="index-link">
-        <a href="produkty.php">Späť</a>
-    </div>
 </body>
 </html>

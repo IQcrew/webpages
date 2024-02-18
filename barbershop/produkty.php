@@ -72,7 +72,7 @@
             margin: 0;
             background-color: #f4f4f4;
             padding: 0px;
-            background: linear-gradient(-45deg, #009dff, #2c8897, #23a6d5, #0141ff);
+            background: linear-gradient(-45deg, #009dff, #2c8897, #23a6d5, #00ffee);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             height: 100vh;

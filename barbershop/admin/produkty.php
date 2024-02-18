@@ -51,6 +51,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
         }
 
         .container {
+            min-height: 80vh;
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;

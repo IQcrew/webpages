@@ -31,18 +31,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrácia</title>
     <style>
+                @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 20px;
+            background: linear-gradient(-45deg, #009dff, #2c8897, #23a6d5, #01fffa);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
         }
         h2 {
             color: #333;
             margin-bottom: 20px;
         }
         form {
-            background-color: #fff;
+            background-color: #ffffff3d;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -61,8 +75,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 0px solid #ccc;
             box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         input[type="submit"] {
             background-color: #007bff;
@@ -75,7 +90,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         .index-link {
             text-align: center;
-            margin-top: 20px;
         }
         .index-link a {
             color: #007bff;
@@ -89,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <h2 style="text-align:center;">Registrácia</h2>
+    <h2 style="text-align:center; margin-top:100px;">Registrácia</h2>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="email">Email:</label>
         <input type="email" name="email" required>
@@ -102,9 +116,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="phoneNumber">Telefónne číslo:</label>
         <input type="text" name="phoneNumber" required>
         <input type="submit" value="Registrovať sa">
+        <div class="index-link">
+            <a href="login.php">Prihlásiť sa</a>
+        </div>
+        <br />
+        <div class="index-link">
+            <a href="produkty.php">Späť</a>
+        </div>
     </form>
-    <div class="index-link">
-        <a href="produkty.php">Späť</a>
-    </div>
 </body>
 </html>
