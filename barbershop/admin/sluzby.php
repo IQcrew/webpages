@@ -74,7 +74,7 @@
 <body>
 <div class="container flex-box">
 <div >
-<h2 style="text-align:center;">Produkty</h2>
+<h2 style="text-align:center;">Služby</h2>
 
 <table>
     <colgroup>
@@ -101,7 +101,7 @@
             echo "</tr>";
         }
     } else {
-        echo "<tr><td colspan='4'>Žiadne produkty nenájdené.</td></tr>";
+        echo "<tr><td colspan='4'>Žiadne Služby nenájdené.</td></tr>";
     }
     $conn->close();
     ?>
@@ -109,7 +109,7 @@
 
 </div>
 <div>
-<h2 style="text-align:center;">Pridať produkt</h2>
+<h2 style="text-align:center;">Pridať Službu</h2>
 <form action="add_service.php" method="POST" class="form-container">
     <label for="name">Názov:</label>
     <input type="text" id="name" name="name" required><br>

@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port = 587;
 
         $mail->setFrom('barbershopsoc@gmail.com', "Barber shop");
-        $mail->addAddress($email, '$firstName');
+        $mail->addAddress($email,$firstName);
 
         $mail->Subject = 'Confirmation email';
         

@@ -24,7 +24,16 @@ if (isset($_GET['id'])) {
             $row = $result->fetch_assoc();
             $userId = $row['UserId'];
 
-            $sql = "INSERT INTO Cart (UserID, ProductID, Quantity) VALUES ('$userId', '$productId', '$quantity')";
+            $sql = "SELECT * FROM Cart WHERE UserID = '$userId' AND ProductID = '$productId'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $newQuantity = $row['Quantity'] + $quantity;
+                $sql = "UPDATE Cart SET Quantity = '$newQuantity' WHERE UserID = '$userId' AND ProductID = '$productId'";
+            } else {
+                $sql = "INSERT INTO Cart (UserID, ProductID, Quantity) VALUES ('$userId', '$productId', '$quantity')";
+            }
+
             if ($conn->query($sql) === TRUE) {
                 header("Location: kosik.php");
                 exit();
@@ -41,10 +50,7 @@ if (isset($_GET['id'])) {
     <link rel="icon" type="image/png" href="src/logo.png">
     <style>
 
-        .product-card:hover {
-            transform: translateY(-5px); 
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
+        
         .product-details {
             display: flex;
             justify-content: space-around;

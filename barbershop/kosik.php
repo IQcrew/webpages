@@ -1,6 +1,6 @@
 <?php
-include 'db_connection.php';
 include 'auth.php';
+include 'db_connection.php';
 
 function getCartProducts($conn, $userId) {
     $sql = "SELECT c.CartID, p.Name, p.Description, p.Price, p.Image, c.Quantity FROM Cart c JOIN Products p ON c.ProductID = p.ProductID WHERE c.UserID = '$userId'";

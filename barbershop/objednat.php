@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'auth.php';
 include 'header.php';
 include 'db_connection.php';
 
@@ -37,33 +37,7 @@ if(empty($cartProducts)) {
 }
 $totalPrice = calculateTotalPrice($cartProducts);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $shippingAddress = $_POST['shippingAddress'];
-    $city = $_POST['city'];
-    $postalCode = $_POST['postalCode'];
-    $country = $_POST['country'];
 
-    $sql = "INSERT INTO Orders (UserID, ShippingAddress, City, PostalCode, Country) VALUES ('$userId', '$shippingAddress', '$city', '$postalCode', '$country')";
-    if ($conn->query($sql) === TRUE) {
-
-        $orderId = $conn->insert_id;
-
-        foreach ($cartProducts as $product) {
-            $productId = $product['CartID'];
-            $quantity = $product['Quantity'];
-            $sql = "INSERT INTO OrderItems (OrderID, ProductID, Quantity) VALUES ('$orderId', '$productId', '$quantity')";
-            $conn->query($sql);
-        }
-
-        $sql = "DELETE FROM Cart WHERE UserID = '$userId'";
-        $conn->query($sql);
-
-        header("Location: profil.php");
-        exit();
-    } else {
-        echo "Chyba: " . $sql . "<br>" . $conn->error;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -222,11 +196,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endforeach; ?>
                 <tr class="total-price">
                     <td colspan="2">Celkom:</td>
-                    <td><?php echo $totalPrice; ?>€</td>
+                    <td><?php echo number_format($totalPrice,2); ?>€</td>
                 </tr>
             </table>
         </div>
-        <form action="objednat.php" method="post" class="form-container">
+        <form action="process_order.php" method="post" class="form-container">
             <label for="shippingAddress" class="form-label">Adresa doručenia:</label>
             <input type="text" id="shippingAddress" name="shippingAddress" required class="form-input">
             <label for="city" class="form-label">Mesto:</label>

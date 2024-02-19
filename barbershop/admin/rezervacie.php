@@ -9,16 +9,32 @@
      type="image/png" 
      href="src/logo.png">
     <style>
-
+        .deleteBtn{
+            display: inline-block;
+            margin: 5px;
+            margin-right: 10px;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 4px;
+            background-color: #ff5f5f;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        .deleteBtn:hover{
+            background-color: #ff0000;
+        }
     </style>
 </head>
+<?php 
+include 'admin_auth.php';
+include 'header.php'; ?>
 <body>
-<?php include 'header.php'; ?>
 <div class="container">
     <h2>Rezervácie</h2>
     <table>
         <tr>
-        <th>ID</th>
+        <th></th>
         <th>Dátum</th>
         <th>Hodina</th>  
         <th>Produkt</th>
@@ -30,7 +46,6 @@
 
         <?php
         include '..\db_connection.php';
-        include 'admin_auth.php';
         
         $sql = "SELECT * FROM Reservations ORDER BY Time, Hour";
         $result = $conn->query($sql);
@@ -39,9 +54,9 @@
 
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row["ReservationID"] . "</td>";
+                echo "<td><a href='remove_rezervacia.php?id=" . $row["ReservationID"] . "' class='deleteBtn'>Delete</a></td>";
                 echo "<td>" . $row["Time"] . "</td>";
-                echo "<td>" . $row["Hour"] . "</td>";
+                echo "<td>" . $row["Hour"] . ":00</td>";
                 echo "<td>" . $row["Sluzba"] . "</td>";
                 echo "<td>" . $row["FirstName"] . "</td>";
                 echo "<td>" . $row["LastName"] . "</td>";

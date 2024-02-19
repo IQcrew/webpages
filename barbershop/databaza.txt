@@ -64,8 +64,15 @@ CREATE TABLE IF NOT EXISTS Orders (
 CREATE TABLE IF NOT EXISTS orderitems (
     OrderItemID INT PRIMARY KEY AUTO_INCREMENT,
     OrderID INT,
-    ProductID INT,
+    ProductPrice DECIMAL(10, 2) NOT NULL,
+    ProductName VARCHAR(255) NOT NULL,
     Quantity INT,
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 );
+
+
+
+
+
+
+

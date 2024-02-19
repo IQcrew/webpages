@@ -105,7 +105,7 @@
     <input type="submit" value="Vyhľadať">
     <input type="text" id="search" name="search" value="">
 </form>
-<div style="min-height:834px;">
+<div style="min-height:834px; margin-top: 75px;">
 <div class="grid-container">
     <?php
     session_start();
