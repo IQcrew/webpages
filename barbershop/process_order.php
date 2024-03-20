@@ -43,9 +43,9 @@ $cartProducts = getCartProducts($conn, $userId);
             foreach ($cartProducts as $product) {
                 $pPrice = $product['Price'];
                 $pName = $product['Name'];
-                $totalPrice += $pPrice * $quantity;
                 $productId = $product['ProductID'];
                 $quantity = $product['Quantity'];
+                $totalPrice += $pPrice * $quantity;
                 $sql = "INSERT INTO OrderItems (OrderID, ProductName,ProductPrice, Quantity) VALUES ('$orderId', '$pName',' $pPrice', '$quantity')";
                 $conn->query($sql);
             }

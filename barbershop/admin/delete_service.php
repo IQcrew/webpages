@@ -1,6 +1,6 @@
 <?php
 
-include '..\db_connection.php';
+include '../db_connection.php';
 include 'admin_auth.php';
 
 if (isset($_GET['id'])) {

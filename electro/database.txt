@@ -1,7 +1,7 @@
 
-CREATE DATABASE IF NOT EXISTS electronic_eshop;
+CREATE DATABASE IF NOT EXISTS d27963_electroidk;
 
-USE electronic_eshop;
+USE d27963_electroidk;
 
 
 CREATE TABLE IF NOT EXISTS products (

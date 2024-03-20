@@ -9,37 +9,34 @@
     <link rel="icon" 
      type="image/png" 
      href="src/logo.png">
-    <title>Holičstvo</title>
+    <title>Barbershop</title>
     <style>
 
     </style>
 </head>
 <script>
-
 function checkWorkingDay() {
     var optionsList = [9, 10, 11, 12, 13, 14, 15, 16];
     const selectedDate = new Date(document.getElementById('date').value);
     const dayOfWeek = selectedDate.getDay();
     var comboBox = document.getElementById("hour");
     comboBox.innerHTML = "";
-
-    getReservationsForDay()
+     
+    getReservationsForDay(convertToDateFormat(selectedDate)) 
         .then(bookedDates => {
-            const myArray = [];
-            for (var i = 0; i < bookedDates.length; i++){
-                myArray.push(bookedDates[i]["Hour"]);
-            }
-            for (var i = 0; i < optionsList.length; i++) {
+            const myArray = bookedDates ? bookedDates.map(entry => entry.Hour) : []; 
+            for (var i = 0; i < optionsList.length; i++) { 
                 
-                if (dayOfWeek === 0 || dayOfWeek === 6 ) {
+                if (dayOfWeek === 0 || dayOfWeek === 6 ) { 
                     continue;
                 }
                 
-                if(myArray.includes(optionsList[i].toString())) { continue;}
+                if(myArray.includes(optionsList[i].toString())) { continue;} 
                 
-                if(convertToDateFormat(new Date()) === convertToDateFormat(selectedDate) && optionsList[i] <= new Date().getHours()){continue;}
+                if(convertToDateFormat(new Date()) === convertToDateFormat(selectedDate) && optionsList[i] <= new Date().getHours()){continue;} 
                 var option = document.createElement("option");
-                option.text = optionsList[i];
+                option.text = optionsList[i]+":00"; 
+                option.value = optionsList[i].toString();
                 comboBox.add(option);
             }
         })
@@ -89,6 +86,7 @@ function convertToDateFormat(inputDate) {
 }
 
 </script>
+
 <?php
 include 'db_connection.php';
 
@@ -107,8 +105,8 @@ $conn->close();
 <body>
     <header>
         <div class="headDiv">
-        <h1>Vitajte v našom holičstve</h1>
-        <p>Zažite umenie holenia a úpravy v našom prémiovom holičstve.</p>
+        <h1>Vitajte v našom barbershope</h1>
+        <p>Zažite umenie holenia a úpravy v našom prémiovom barbershope.</p>
         </div>
     </header>
 
@@ -171,7 +169,7 @@ $conn->close();
             
             <h2>Adresa</h2>
             <p>Navštívte nás na nasledujúcej adrese:</p>
-            <p>123 Holícka ulica, Žilina, 010 01</p>
+            <p>8 Kempelenova, Žilina, 010 15</p>
         </div>
         <div >
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d774.7233349154218!2d18.746490503201738!3d49.22240398143839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssk!2ssk!4v1707342563302!5m2!1ssk!2ssk" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

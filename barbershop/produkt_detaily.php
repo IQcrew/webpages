@@ -5,10 +5,7 @@ include 'header.php';
 
 if (isset($_GET['id'])) {
     $productId = $_GET['id'];
-    if (!isset($_SESSION['email'])) {
-        header("Location: login.php");
-        exit();
-    }
+
     $sql = "SELECT * FROM Products WHERE ProductID = $productId";
     $result = $conn->query($sql);
 
@@ -16,6 +13,10 @@ if (isset($_GET['id'])) {
         $row = $result->fetch_assoc();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (!isset($_SESSION['email'])) {
+                header("Location: login.php");
+                exit();
+            }
             $quantity = $_POST['quantity'];
             $userId = $_SESSION['email'];
 

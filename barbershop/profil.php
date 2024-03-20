@@ -20,8 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $phoneNumber = $_POST['phoneNumber'];
+    if(isset($_POST['password']) && strlen($_POST['password'] >4)){
+        $newPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $sqlUpdateUser = "UPDATE Users SET FirstName = '$firstName', LastName = '$lastName', Password = '$newPassword' , PhoneNumber = '$phoneNumber' WHERE Email = '$userEmail'";
 
+    }
+else{
     $sqlUpdateUser = "UPDATE Users SET FirstName = '$firstName', LastName = '$lastName', PhoneNumber = '$phoneNumber' WHERE Email = '$userEmail'";
+}
+
     if ($conn->query($sqlUpdateUser) === TRUE) {
         header("Location: profil.php");
         exit();
@@ -178,6 +185,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h3>Informácie o používateľovi</h3>
             <form action="profil.php" method="post">
                 <p><label>E-mail:</label> <?php echo $rowUserInfo['Email']; ?></p>
+                <p><label for="password">Heslo:</label>
+                <input type="text" id="password" name="password" class="form-input" minlength="5"></p>
                 <p><label for="firstName">Meno:</label>
                 <input type="text" id="firstName" name="firstName" class="form-input" value="<?php echo $rowUserInfo['FirstName']; ?>"></p>
                 <p><label for="lastName">Priezvisko:</label>

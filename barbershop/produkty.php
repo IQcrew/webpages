@@ -12,7 +12,6 @@
             justify-content: space-around;
             grid-gap: 20px;
             padding: 20px;
-            min-height: 80vh;
         }
 
         .product-card {
@@ -105,7 +104,7 @@
     <input type="submit" value="Vyhľadať">
     <input type="text" id="search" name="search" value="">
 </form>
-<div style="min-height:834px; margin-top: 75px;">
+<div style="min-height:85vh; margin-top: 75px;">
 <div class="grid-container">
     <?php
     session_start();

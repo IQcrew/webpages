@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$username = "root"; // Default MySQL username for XAMPP
-$password = "";     // Default MySQL password is usually empty in XAMPP
-$database = "electronic_eshop"; // Change to your actual database name
+$host = "sql13.hostcreators.sk:3318";
+$username = "u27963_electroidk"; // Default MySQL username for XAMPP
+$password = "R8-sL6Ie2zB.!!z0";     // Default MySQL password is usually empty in XAMPP
+$database = "d27963_electroidk"; // Change to your actual database name
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $database);
